@@ -557,13 +557,13 @@ body {
 
 /* crew */
 .crew {
-    background-image: url(./assets/crew/background-crew-mobile.jpg);
+    background-image: url(/assets/crew/background-crew-mobile.jpg);
 }
 
 @media (min-width: 35rem) {
     .crew {
         background-position: center center;
-        background-image: url(./assets/crew/background-crew-tablet.jpg);
+        background-image: url(/assets/crew/background-crew-tablet.jpg);
     }
 }
 
