@@ -28,11 +28,11 @@
         aria-expanded="false">Menu</span></button>
     <nav>
       <ul id="primary-navigation" data-visible="false" class="primary-navigation underline-indicators flex">
-        <li class="active"><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="index.html"><span
+        <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="index.html"><span
               aria-hidden="true">00</span>Home</a>
         <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="destination.html"><span
               aria-hidden="true">01</span>Destination</a>
-        <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="crew.html"><span
+        <li class="active"><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="crew.html"><span
               aria-hidden="true">02</span>Crew</a>
         <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="technology.html"><span
               aria-hidden="true">03</span>Technology</a>
@@ -43,15 +43,15 @@
   <main id="main" class="grid-container grid-container--crew flow">
     <h1 class="numbered-title"><span aria-hidden="true">02</span> Meet your crew</h1>
 
-    <div class="dot-indicators flex">
-      <button aria-selected="true" aria-controls="commander-tab" data-image="commander-image"><span class="sr-only">The commander</span></button>
-      <button aria-selected="false" aria-controls="specialist-tab" data-image="specialist-image"><span class="sr-only">The specialist</span></button>
-      <button aria-selected="false" aria-controls="pilot-tab" data-image="pilot-image"><span class="sr-only">The pilot</span></button>
-      <button aria-selected="false" aria-controls="engineer-tab" data-image="engineer-image"><span class="sr-only">The engineer</span></button>
+    <div class="dot-indicators flex" role="tablist" aria-label="crew member list">
+      <button aria-selected="true" aria-controls="commander-tab" role="tab" data-image="commander-image" tabindex="0"><span class="sr-only">The commander</span></button>
+      <button aria-selected="false" aria-controls="specialist-tab" role="tab" data-image="specialist-image" tabindex="-1"><span class="sr-only">The specialist</span></button>
+      <button aria-selected="false" aria-controls="pilot-tab" role="tab" data-image="pilot-image" tabindex="-1"><span class="sr-only">The pilot</span></button>
+      <button aria-selected="false" aria-controls="engineer-tab" role="tab" data-image="engineer-image" tabindex="-1"><span class="sr-only">The engineer</span></button>
     </div>
 
     <!-- Commander -->
-    <article class="crew-details flow" id="commander-tab">
+    <article class="crew-details flow" id="commander-tab" role="tabpanel" tabindex="0">
      <header class="flow flow--space-small">
        <h2 class="fs-600 ff-serif uppercase">Commander</h2>
        <p class="fs-700 ff-serif uppercase">Douglas Hurley</p>
@@ -64,7 +64,7 @@
     </article>
 
     <!-- Specialist -->
-    <article hidden class="crew-details flow">
+    <article hidden class="crew-details flow" id="specialist-tab" role="tabpanel" tabindex="-1">
       <header class="flow flow--space-small">
         <h2 class="fs-600 ff-serif uppercase">Mission Specialist</h2>
         <p class="fs-700 ff-serif uppercase">Mark Shuttleworth</p>
@@ -75,7 +75,7 @@
     </article>
 
     <!-- Pilot -->
-    <article hidden class="crew-details flow">
+    <article hidden class="crew-details flow" id="pilot-tab" role="tabpanel" tabindex="-1">
       <header class="flow flow--space-small">
         <h2 class="fs-600 ff-serif uppercase">Pilot</h2>
         <p class="fs-700 ff-serif uppercase">Victor Glover</p>
@@ -87,7 +87,7 @@
     </article>
 
     <!-- Engineer -->
-    <article hidden class="crew-details flow">
+    <article hidden class="crew-details flow" id="engineer-tab" role="tabpanel" tabindex="-1">
       <header class="flow flow--space-small">
         <h2 class="fs-600 ff-serif uppercase">Flight Engineer</h2>
         <p class="fs-700 ff-serif uppercase">Anousheh Ansari</p>
@@ -116,5 +116,6 @@
 
   </main>
   <script src="navgiation.js"></script>
+  <script src="tabs.js"></script>
 </body>
 </html>
