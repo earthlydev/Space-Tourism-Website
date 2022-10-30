@@ -24,7 +24,7 @@
     --ff-sans-normal: "Barlow", sans-serif;
 }
 
-@media (min-width: 35em) {
+@media (min-width: 35rem) {
     :root {
         /* font-sizes */
         --fs-800: 5rem;
@@ -34,7 +34,7 @@
     }
 }
 
-@media (min-width: 45em) {
+@media (min-width: 45rem) {
     :root {
         /* font-sizes */
         --fs-800: 6.25rem;
@@ -97,6 +97,7 @@ body {
     /* grid allows us to use the full vh */
     display: grid;
     grid-template-rows: min-content 1fr;
+    overflow-x: hidden;
 }
 
 /* Make images easier to work with */
@@ -152,7 +153,6 @@ select {
 
 .container {
     padding-inline: 2em;
-    /* left and right padding */
     margin-inline: auto;
     max-width: 80rem;
 }
@@ -168,7 +168,7 @@ select {
     max-width: 50ch;
 }
 
-@media (min-width: 45em) {
+@media (min-width: 45rem) {
     .grid-container {
         text-align: left;
         column-gap: var(--container-gap, 2rem);
@@ -199,7 +199,6 @@ select {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
-    /* added line */
     border: 0;
 }
 
@@ -347,6 +346,17 @@ select {
     transform: scale(1.5);
 }
 
+/* Primary Header  */
+
+.logo {
+    margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.primary-header {
+    justify-content: space-between;
+
+}
+
 .primary-navigation {
     --underline-gap: 2rem;
     position: fixed;
@@ -356,25 +366,34 @@ select {
     background: hsl(var(--clr-dark) / 0.95 );
 }
 
+ /* If the condition is true, use the CSS in this block. */
+ @supports (backdrop-filter: blur(1rem)) {
+     .primary-navigation {
+         background: hsl(var(--clr-white) / .05);
+         backdrop-filter: blur(1.5rem);
+     }
+ }
+
+.primary-navigation a {
+    text-decoration: none;
+}
+
+.primary-navigation a > span {
+    font-weight: 700;
+    margin-right: .5em;
+}
+
 .mobile-nav-toggle {
     display: none;
 }
 
- /* If the condition is true, use the CSS in this block. */
-@supports (backdrop-filter: blur(1rem)) {
-    .primary-navigation {
-        background: hsl(var(--clr-white) / .05);
-        backdrop-filter: blur(1.5rem);
-    }
-}
-
-/* Better to use min-width> in this case for navs use max width */
-@media (max-width: 35em) {
+/* Better to use min-width > in this case for navs use max width */
+@media (max-width: 35rem) {
     .primary-navigation {
         --underline-gap: .5rem;
         position: fixed;
         z-index: 1000;
-        inset: 0 0 0 30%; /* short hand for top-bottom-left-right*/
+        inset: 0 0 0 30%;
         list-style: none;
         padding: min(20rem, 15vh) 2rem;
         margin: 0;
@@ -387,9 +406,11 @@ select {
         transform: translateX(0);
     }
 
+    .primary-navigation.underline-indicators>.active {
+        border: 0;
+    }
 
     .mobile-nav-toggle {
-        cursor: pointer;
         display: block;
         position: absolute;
         z-index: 2000;
@@ -408,19 +429,11 @@ select {
         background-image: url(./assets/shared/icon-close.svg);
     }
 
-    .mobile-nav-toggle:focus-visible{
+    .mobile-nav-toggle:focus-visible {
         outline: 5px solid white;
         outline-offset: 5px;
     }
-}
 
-.primary-navigation a {
-    text-decoration: none;
-}
-
-.primary-navigation a > span {
-    font-weight: 700;
-    margin-right: .5em;
 }
 
 .underline-indicators > * {
@@ -436,11 +449,10 @@ select {
 }
 
 
-@media (min-width:35em) {.underline-indicators > .active,
+.underline-indicators > .active,
 .underline-indicators > [aria-selected="true"] {
-        color: hsl(var(--clr-white));
-        border-color: hsl(var(--clr-white) / 1);
-    }
+    color: hsl(var(--clr-white) / 1);
+    border-color: hsl(var(--clr-white) / 1);
 }
 
 .tab-list {
@@ -500,19 +512,19 @@ body {
     background-size: cover;
     background-position: bottom center;
 }
-
+/* home */
 .home {
     background-image: url(./assets/home/background-home-mobile.jpg);
 }
 
-@media (min-width: 35em) {
+@media (min-width: 35rem) {
     .home {
         background-position: center center;
         background-image: url(./assets/home/background-home-tablet.jpg);
     }
 }
 
-@media (min-width: 45em) {
+@media (min-width: 45rem) {
     .home {
         background-image: url(./assets/home/background-home-desktop.jpg);
     }
