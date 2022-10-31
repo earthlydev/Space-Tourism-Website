@@ -1,6 +1,6 @@
-/* ------------------ */
-/* Custom Properties  */
-/* ------------------ */
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
 
 :root {
     /* colors */
@@ -24,9 +24,8 @@
     --ff-sans-normal: "Barlow", sans-serif;
 }
 
-@media (min-width: 35rem) {
+@media (min-width: 35em) {
     :root {
-        /* font-sizes */
         --fs-800: 5rem;
         --fs-700: 2.5rem;
         --fs-600: 1.5rem;
@@ -34,7 +33,7 @@
     }
 }
 
-@media (min-width: 45rem) {
+@media (min-width: 45em) {
     :root {
         /* font-sizes */
         --fs-800: 6.25rem;
@@ -44,24 +43,21 @@
     }
 }
 
-/* ------------------ */
-/* Reset              */
-/* ------------------ */
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
 
 /* https://piccalil.li/blog/a-modern-css-reset/ */
 
-/* Box Sizing */
-
+/* Box sizing */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-/* The above makes calculating witdth/height easier */
-
-/*  Reset Margins  */
-
+/* Reset margins */
 body,
 h1,
 h2,
@@ -84,9 +80,7 @@ p {
     font-weight: 400;
 }
 
-/* Prevents collapsing margin */
-
-/*  Set up the body */
+/* set up the body */
 body {
     font-family: var(--ff-sans-normal);
     font-size: var(--fs-400);
@@ -97,17 +91,18 @@ body {
     /* grid allows us to use the full vh */
     display: grid;
     grid-template-rows: min-content 1fr;
+
     overflow-x: hidden;
 }
 
-/* Make images easier to work with */
+/* make images easier to work with */
 img,
-picture {
+picutre {
     max-width: 100%;
     display: block;
 }
 
-/* Makes form elements easier to work with */
+/* make form elements easier to work with */
 input,
 button,
 textarea,
@@ -115,7 +110,7 @@ select {
     font: inherit;
 }
 
-/* Remove animations for people who've turned them off */
+/* remove animations for people who've turned them off */
 @media (prefers-reduced-motion: reduce) {
 
     *,
@@ -123,15 +118,17 @@ select {
     *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: 0.01 !important;
+        transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
 }
 
 
-/* ------------------ */
-/* Utility Classes */
-/* ------------------ */
+/* ------------------- */
+/* Utility classes     */
+/* ------------------- */
+
+/* general */
 
 .flex {
     display: flex;
@@ -162,17 +159,18 @@ select {
     display: grid;
     place-items: center;
     padding-inline: 1rem;
+
 }
 
 .grid-container * {
     max-width: 50ch;
 }
 
-@media (min-width: 45rem) {
+@media (min-width: 45em) {
     .grid-container {
         text-align: left;
         column-gap: var(--container-gap, 2rem);
-        grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
+        grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(1rem, 1fr);
     }
 
     .grid-container>*:first-child {
@@ -189,9 +187,10 @@ select {
     }
 }
 
+
 .sr-only {
     /* Read contents for ie: button with no text for a screen reader*/
-    position: absolute;
+position: absolute;
     width: 1px;
     height: 1px;
     padding: 0;
@@ -199,10 +198,24 @@ select {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
+    /* added line */
     border: 0;
 }
+.skip-to-content {
+    position: absolute;
+    background: hsl(var(--clr-white));
+    color: hsl(var(--clr-dark));
+    padding: .5em 1em;
+    margin-inline: auto;
+    transform: translateY(-100%);
+    transition: transform 250ms ease-in;
+}
 
-/* Colors */
+.skip-to-content:focus {
+    transform: translateY(0);
+}
+
+/* colors */
 
 .bg-dark {
     background-color: hsl(var(--clr-dark));
@@ -228,7 +241,7 @@ select {
     color: hsl(var(--clr-white));
 }
 
-/* Typography */
+/* typography */
 
 .ff-serif {
     font-family: var(--ff-serif);
@@ -308,13 +321,13 @@ select {
 .numbered-title span {
     margin-right: .5em;
     font-weight: 700;
-    color: hsl(var(--clr-light) / .25);
+    color: hsl(var(--clr-white) / .25);
 }
 
 
-/* ------------------ */
-/* Components         */
-/* ------------------ */
+/* ------------------- */
+/* Compontents         */
+/* ------------------- */
 
 .large-button {
     font-size: 2rem;
@@ -346,7 +359,7 @@ select {
     transform: scale(1.5);
 }
 
-/* Primary Header  */
+/* primary-header */
 
 .logo {
     margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
@@ -354,31 +367,24 @@ select {
 
 .primary-header {
     justify-content: space-between;
-
+    align-items: center;
 }
 
 .primary-navigation {
+    --gap: clamp(1.5rem, 5vw, 3.5rem);
     --underline-gap: 2rem;
-    position: fixed;
     list-style: none;
     padding: 0;
     margin: 0;
-    background: hsl(var(--clr-dark) / 0.95 );
+    background: hsl(var(--clr-white) / 0.05);
+    backdrop-filter: blur(1.5rem);
 }
-
- /* If the condition is true, use the CSS in this block. */
- @supports (backdrop-filter: blur(1rem)) {
-     .primary-navigation {
-         background: hsl(var(--clr-white) / .05);
-         backdrop-filter: blur(1.5rem);
-     }
- }
 
 .primary-navigation a {
     text-decoration: none;
 }
 
-.primary-navigation a > span {
+.primary-navigation a>span {
     font-weight: 700;
     margin-right: .5em;
 }
@@ -387,8 +393,7 @@ select {
     display: none;
 }
 
-/* Better to use min-width > in this case for navs use max width */
-@media (max-width: 35rem) {
+@media (max-width: 35em) {
     .primary-navigation {
         --underline-gap: .5rem;
         position: fixed;
@@ -436,21 +441,54 @@ select {
 
 }
 
-.underline-indicators > * {
+@media (min-width: 35em) {
+    .primary-navigation {
+            padding-inline: clamp(3rem, 7vw, 7rem);
+        }
+}
+
+@media (min-width: 35em) and (max-width: 44.999em) {
+    .primary-navigation a > span {
+        display: none;
+    }
+}
+
+@media (min-width: 45em) {
+    .primary-header::after {
+        content: '';
+        display: block;
+        position: relative;
+        height: 1px;
+        width: 100%;
+        margin-right: -2.5rem;
+        background: hsl(var(--clr-white) / 2.5 );
+        order: 1;
+    }
+
+    nav {
+        order: 2;
+    }
+    
+    .primary-navigation {
+        margin-block: 2rem;
+    }
+}
+
+
+.underline-indicators>* {
     cursor: pointer;
     padding: var(--underline-gap, 1rem) 0;
     border: 0;
     border-bottom: .2rem solid hsl(var(--clr-white) / 0);
 }
 
-.underline-indicators > *:hover,
-.underline-indicators > *:focus {
-    border-color: hsl(var(--clr-white) / .25);
+.underline-indicators>*:hover,
+.underline-indicators>*:focus {
+    border-color: hsl(var(--clr-white) / .5);
 }
 
-
-.underline-indicators > .active,
-.underline-indicators > [aria-selected="true"] {
+.underline-indicators>.active,
+.underline-indicators>[aria-selected="true"] {
     color: hsl(var(--clr-white) / 1);
     border-color: hsl(var(--clr-white) / 1);
 }
@@ -459,21 +497,20 @@ select {
     --gap: 2rem;
 }
 
-.dot-indicators > * {
+.dot-indicators>* {
     cursor: pointer;
     border: 0;
     border-radius: 50%;
-    aspect-ratio: 1;
     padding: .5em;
     background-color: hsl(var(--clr-white) / .25);
 }
 
-.dot-indicators > *:hover,
-.dot-indicators > *:focus {
+.dot-indicators>*:hover,
+.dot-indicators>*:focus {
     background-color: hsl(var(--clr-white) / .5);
 }
 
-.dot-indicators > [aria-selected="true"] {
+.dot-indicators>[aria-selected="true"] {
     background-color: hsl(var(--clr-white) / 1);
 }
 
