@@ -52,10 +52,24 @@ figure,
 picture {
     margin: 0;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: 400;
+}
 /* Prevents collapsing margin */
 
 /*  Set up the body */
 body{
+    font-family: var(--ff-sans-normal);
+    font-size: var(--fs-400);
+    color: hsl( var(--clr-white) );
+    background-color: hsl( var(--clr-dark) );
     line-height: 1.5;
     min-height: 100vh;
 }
@@ -134,11 +148,11 @@ select {
 
 .ff-serif { font-family: var(--ff-serif); }
 .ff-sans-cond { font-family: var(--ff-sans-cond); }
-.ff-sans-normal { font-family: var(--ff-sans-normal)};
+.ff-sans-normal { font-family: var(--ff-sans-normal); }
 
-.letter-spacing-1 { letter-spacing: 4.75px; }
-.letter-spacing-2 { letter-spacing: 2.7px; }
-.letter-spacing-3 { letter-spacing: 2.35px; }
+.letter-spacing-1 { letter-spacing: 4.75px; } 
+.letter-spacing-2 { letter-spacing: 2.7px; } 
+.letter-spacing-3 { letter-spacing: 2.35px; } 
 
 .uppercase { text-transform: uppercase; }
 
@@ -155,5 +169,5 @@ select {
 .fs-800,
 .fs-700,
 .fs-600 {
-    line-height: 1.1;
+    line-height: 1.1; /* big fonts break the spacing */
 }
