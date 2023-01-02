@@ -424,3 +424,29 @@ select {
     background: hsl(var(--clr-white));
     color: hsl(var(--clr-dark));
 }
+
+/* --------------------------- */
+/* Page Specific Background    */
+/* --------------------------- */
+
+body {
+    background-size: cover;
+    background-position: bottom center;
+}
+
+.home {
+    background-image: url(./assets/home/background-home-mobile.jpg);
+}
+
+@media (min-width: 35em) {
+    .home {
+        background-position: center center;
+        background-image: url(./assets/home/background-home-tablet.jpg);
+    }
+}
+
+@media (min-width: 45em) {
+    .home {
+        background-image: url(./assets/home/background-home-desktop.jpg);
+    }
+}
