@@ -343,36 +343,56 @@ select {
 }
 
 .primary-navigation {
-    --gap: 8rem;
     --underline-gap: 2rem;
+    position: fixed;
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+@media (max-width: 35em) {
+    .primary-navigation {
+        --underline-gap: .5rem;
+        position: fixed;
+        z-index: 1000;
+        inset: 0 0 0 30%; /* short hand for top-bottom-left-right*/
+        background: black;
+        opacity: .7;
+        list-style: none;
+        padding: min(20rem, 15vh) 2rem;
+        margin: 0;
+        flex-direction: column;
+    }
+
+    /* Extra specificity works in this condition */
+    .primary-navigation.underline-indicators > .active {
+        border: 0;
+    }
 }
 
 .primary-navigation a {
     text-decoration: none;
 }
 
-.primary-navigation a>span {
+.primary-navigation a > span {
     font-weight: 700;
     margin-right: .5em;
 }
 
-.underline-indicators>* {
+.underline-indicators > * {
     cursor: pointer;
     padding: var(--underline-gap, 1rem) 0;
     border: 0;
     border-bottom: .2rem solid hsl(var(--clr-white) / 0);
 }
 
-.underline-indicators>*:hover,
-.underline-indicators>*:focus {
+.underline-indicators > *:hover,
+.underline-indicators > *:focus {
     border-color: hsl(var(--clr-white) / .25);
 }
 
-.underline-indicators>.active,
-.underline-indicators>[aria-selected="true"] {
+.underline-indicators > .active,
+.underline-indicators > [aria-selected="true"] {
     color: hsl(var(--clr-white));
     border-color: hsl(var(--clr-white) / 1);
 }
@@ -381,7 +401,7 @@ select {
     --gap: 2rem;
 }
 
-.dot-indicators>* {
+.dot-indicators > * {
     cursor: pointer;
     border: 0;
     border-radius: 50%;
@@ -390,12 +410,12 @@ select {
     background-color: hsl(var(--clr-white) / .25);
 }
 
-.dot-indicators>*:hover,
-.dot-indicators>*:focus {
+.dot-indicators > *:hover,
+.dot-indicators > *:focus {
     background-color: hsl(var(--clr-white) / .5);
 }
 
-.dot-indicators>[aria-selected="true"] {
+.dot-indicators > [aria-selected="true"] {
     background-color: hsl(var(--clr-white) / 1);
 }
 
@@ -403,7 +423,7 @@ select {
     --gap: 2rem;
 }
 
-.num-indicator>* {
+.num-indicator > * {
     cursor: pointer;
     background: none;
     color: hsl(var(--clr-white));
@@ -415,15 +435,16 @@ select {
     font-size: var(--fs-600);
 }
 
-.num-indicator>*:hover,
-.num-indicator>*:focus {
+.num-indicator > *:hover,
+.num-indicator > *:focus {
     border-color: hsl(var(--clr-white) / 1);
 }
 
-.num-indicator>[aria-selected="true"] {
+.num-indicator > [aria-selected="true"] {
     background: hsl(var(--clr-white));
     color: hsl(var(--clr-dark));
 }
+
 
 /* --------------------------- */
 /* Page Specific Background    */
