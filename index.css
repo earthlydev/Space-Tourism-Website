@@ -63,7 +63,7 @@ select {
 
 
 /* ------------------ */
-/* Utility Classes */
+/* Utility Classes    */
 /* ------------------ */
 
 .flex {
@@ -82,14 +82,15 @@ select {
     max-width: 80rem;
 }
 
-.sr-only { /* Read contents for ie: button with no text for a screen reader*/
+/* Read contents for ie: button with no text for a screen reader*/
+.sr-only {
     position: absolute;
-    width: 1px; 
+    width: 1px;
     height: 1px;
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0,0,0,0);
+    clip: rect(0, 0, 0, 0);
     white-space: nowrap; /* added line */
     border: 0;
 }
