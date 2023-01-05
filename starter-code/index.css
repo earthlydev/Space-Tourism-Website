@@ -132,6 +132,11 @@ select {
 /* Utility Classes */
 /* ------------------ */
 
+.flex {
+    display: flex;
+    gap: var(--gap, 1rem);
+}
+
 .grid {
     display: grid;
     gap: var(--gap, 1rem);
@@ -348,25 +353,64 @@ select {
     list-style: none;
     padding: 0;
     margin: 0;
+    background: hsl(var(--clr-dark) / 0.95 );
 }
 
+.mobile-nav-toggle {
+    display: none;
+}
+
+ /* If the condition is true, use the CSS in this block. */
+@supports (backdrop-filter: blur(1rem)) {
+    .primary-navigation {
+        background: hsl(var(--clr-white) / .05);
+        backdrop-filter: blur(1.5rem);
+    }
+}
+
+/* Better to use min-width> in this case for navs use max width */
 @media (max-width: 35em) {
     .primary-navigation {
         --underline-gap: .5rem;
         position: fixed;
         z-index: 1000;
         inset: 0 0 0 30%; /* short hand for top-bottom-left-right*/
-        background: black;
-        opacity: .7;
         list-style: none;
         padding: min(20rem, 15vh) 2rem;
         margin: 0;
         flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 500ms ease-in-out;
     }
 
-    /* Extra specificity works in this condition */
-    .primary-navigation.underline-indicators > .active {
+    .primary-navigation[data-visible="true"] {
+        transform: translateX(0);
+    }
+
+
+    .mobile-nav-toggle {
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        z-index: 2000;
+        right: 1rem;
+        top: 2rem;
+        background: transparent;
+        background-image: url(./assets/shared/icon-hamburger.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 1.5rem;
+        aspect-ratio: 1;
         border: 0;
+    }
+
+    .mobile-nav-toggle[aria-expanded="true"] {
+        background-image: url(./assets/shared/icon-close.svg);
+    }
+
+    .mobile-nav-toggle:focus-visible{
+        outline: 5px solid white;
+        outline-offset: 5px;
     }
 }
 
@@ -391,10 +435,12 @@ select {
     border-color: hsl(var(--clr-white) / .25);
 }
 
-.underline-indicators > .active,
+
+@media (min-width:35em) {.underline-indicators > .active,
 .underline-indicators > [aria-selected="true"] {
-    color: hsl(var(--clr-white));
-    border-color: hsl(var(--clr-white) / 1);
+        color: hsl(var(--clr-white));
+        border-color: hsl(var(--clr-white) / 1);
+    }
 }
 
 .tab-list {
