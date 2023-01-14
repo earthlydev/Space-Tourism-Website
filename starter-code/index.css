@@ -574,6 +574,23 @@ body {
     }
 }
 
+.tech {
+    background-image: url(./assets/technology/background-technology-mobile.jpg);
+}
+
+@media (min-width: 35rem) {
+    .tech {
+        background-position: center center;
+        background-image: url(./assets/technology/background-technology-tablet.jpg);
+    }
+}
+
+@media (min-width: 45rem) {
+    .tech {
+        background-image: url(./assets/technology/background-technology-desktop.jpg);
+    }
+}
+
 /* ------------------------ */
 /* Layout                   */
 /* ------------------------ */
@@ -631,7 +648,6 @@ body {
 }
 
 /* crew layout */
-
 .grid-container--crew {
     --flow-space: 2rem;
     grid-template-areas:
@@ -662,6 +678,7 @@ body {
 /* tech layout */
 .grid-container--tech {
     --flow-space: 2rem;
+    padding-inline: 0;
     grid-template-areas:
         'title'
         'image'
@@ -671,6 +688,10 @@ body {
 
 .grid-container--tech > picture {
     grid-area: image;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    width: 100vw;
+    left: 0;
 }
 
 .grid-container--tech > .num-indicator {
@@ -681,10 +702,9 @@ body {
     grid-area: content;
 }
 
-.tech-info > p {
-    padding-inline: 1.75rem;
+.portrait {
+    display: none;
 }
-
 
 @media (min-width: 35em) {
     .numbered-title {
@@ -706,14 +726,13 @@ body {
             'image';
     }
 
+    .grid-container--tech .numbered-title {
+        padding-inline: 1rem;
+    }
+
     .num-indicator > * {
         width: 3.75rem;
     }
-
-    .portrait {
-        display: none;
-    }
-
 }
 
 @media (min-width: 45em) {
@@ -772,14 +791,22 @@ body {
     .grid-container--tech {
         grid-template-areas:
             '. title title .'
-            'tabs content image .'
-            'tabs content image .';
+            '. tabs content image'
+            '. tabs content image';
         justify-items: start;
+    }
+
+    .grid-container--tech > picture {
+        grid-column: span 2;
     }
 
     .num-indicator {
         display: grid;
         --gap: 2rem;
+    }
+    
+    .num-indicator > * {
+        width: 5rem;
     }
 
     .landscape {
