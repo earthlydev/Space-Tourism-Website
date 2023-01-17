@@ -85,5 +85,5 @@ In future projects, I plan to continue focusing on integrating data into my webs
 
 ## Acknowledgments
 
-Shout out to # Kevin Powell! 
-Writing out beautiful CSS is an art and making it web accessible is amazing, thank you for the lesson.
+Shout out to Kevin Powell! 
+Writing out beautiful CSS is an art and making it web accessible is amazing, thank you for the teaching me the ways.
