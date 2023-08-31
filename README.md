@@ -31,7 +31,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Solution](https://github.com/earthlydev/Space-Tourism-Website/)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Live Site](https://earthlydev.github.io/Space-Tourism-Website/)
 
 ## My process
 
